@@ -27,17 +27,18 @@ const corOptions = {
 //Configura as permissões da API através do CORS
 app.use(cors(corOptions))
 
-app.post('/v1/iot/led', function(request, response){
-
+app.post('/v1/iot/led',bodyParserJSON, function(request, response){
+    
     let dadosBody = request.body
+    console.log(dadosBody)
 
-    if(dadosBody.comando = 'ligar')
+    if(dadosBody.comando == 'ligar')
         mqttClient.publish('senaijandira/sala/manha/9', 'ligar')
-    else if(dadosBody.comando = 'desligar')
+    else if(dadosBody.comando == 'desligar')
         mqttClient.publish('senaijandira/sala/manha/9', 'desligar')
     
 
-    mqttClient.publish('senaijandira/sala/manha/9', 'ligar')
+    
 
 
     response.status(200);
